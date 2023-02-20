@@ -16,3 +16,14 @@ jobs:
           patterns_to_include: 'reference/Obsrvr-API.yaml'
           repos_to_ignore: Stellar-Horizon-API, soroban-rpc-postman, soroban-tools, obsrvr-api
           destination: 'postman/schemas' 
+      - name: Copy Files to Another Repo
+        uses: nkoppel/push-files-to-another-repository@1.1.0
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.CUSTOM_TOKEN }}
+        with:
+          source-files: 'reference/Obsrvr-API.yaml'
+          destination-username: 'tmosleyIII'
+          destination-repository: 'withObsrvr/obsrvr-postman'
+          destination-directory: 'postman/schemas'
+          commit-email: 'tillman@withObsrvr.com'
+          
