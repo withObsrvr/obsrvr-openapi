@@ -1,0 +1,23 @@
+{
+  "collapseTableOfContents": false,
+  "items": [
+    {
+      "type": "divider",
+      "title": "quickstart"
+    },
+    {
+      "type": "item",
+      "title": "API Quickstart",
+      "uri": "/docs/quickstart/API-Quickstart.md"
+    },
+    {
+      "type": "divider",
+      "title": "APIS"
+    },
+    {
+      "type": "item",
+      "title": "Obsrvr Platform API",
+      "uri": "/reference/Obsrvr-API.yaml"
+    }
+  ]
+}
