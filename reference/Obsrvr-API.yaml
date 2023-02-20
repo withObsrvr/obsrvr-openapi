@@ -5,6 +5,9 @@ info:
   title: Obsrvr Platform API
   version: 0.0.1
   description: Obsrvr Platform API 
+  license:
+      url: https://opensource.org/license/mit/
+      name: MIT
   contact:
     email: api-engineering@withobsrvr.com
     name: Obsrvr Platform API
@@ -25,8 +28,12 @@ tags:
     description: Managed Instance tag
   - name: ManagedInstances
     description: Managed Instance tag
+  - name: Plans
+    description: Plans tag
   - name: Projects
     description: Projects tag
+  - name: Regions
+    description: Regions tag
   - name: Tags
     description: Tags tag
   
@@ -215,6 +222,54 @@ paths:
           description: Too Many Requests
         '500':
           description: Server Error
+  /plans:
+    get:
+      summary: List All Plans
+      description: List All Plans
+      tags:
+        - Plans
+      operationId: list-plans
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/plans'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /regions:
+    get:
+      summary: List All Regions
+      description: List All Regions
+      tags:
+        - Regions
+      operationId: list-regions
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/region'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
   /tags:
     get:
       summary: List All Tags
@@ -309,15 +364,18 @@ components:
         region:
           type: string
           description: The region of the instance
-        size:
+        plan:
           type: string
-          description: Size of instance
+          description: Size slug of instance
         status:
           type: string
           description: The current status
         tag:
           type: string
           description: The user-supplied tag for this instance
+        instance_type:
+          type: string
+          description: Type of instance
         version:
           type: string
           description: The version of the software for this instance
@@ -339,9 +397,9 @@ components:
           description: An array of product features available in this region
           items:
             type: string
-        sizes:
+        plans:
           type: array
-          description: An array of available sizes in this region
+          description: An array of available plans in this region
           items:
             type: string
     plans:
