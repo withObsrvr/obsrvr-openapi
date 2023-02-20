@@ -13,9 +13,6 @@ jobs:
         uses: derberg/copy-files-to-other-repositories@v1
         with:
           github_token: ${{ secrets.CUSTOM_TOKEN }}
-          committer_username: tmosleyIII 
-          committer_email: tillman@withobsrvr.com 
-          commit_message: "Updating OpenAPI Schema" 
           patterns_to_include: 'reference/Obsrvr-API.yaml'
-          repos_to_ignore: Stellar-Horizon-API, soroban-rpc-postman, soroban-tools
+          repos_to_ignore: Stellar-Horizon-API, soroban-rpc-postman, soroban-tools, obsrvr-api
           destination: 'postman/schemas' 
