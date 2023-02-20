@@ -17,7 +17,7 @@ jobs:
           repos_to_ignore: Stellar-Horizon-API, soroban-rpc-postman, soroban-tools, obsrvr-api
           destination: 'postman/schemas' 
       - name: Copy Files to Another Repo
-        uses: nkoppel/push-files-to-another-repository@1.1.0
+        uses: nkoppel/push-files-to-another-repository@1.1.1
         env:
           API_TOKEN_GITHUB: ${{ secrets.CUSTOM_TOKEN }}
         with:
