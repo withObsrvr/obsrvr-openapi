@@ -55,7 +55,7 @@ paths:
                   value:
                     account:
                       name: Example User
-                      email: user@example.com
+                      email: example.user@example.com
                       status: active
   /billing/balance:
     get:
