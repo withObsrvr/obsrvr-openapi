@@ -39,9 +39,10 @@ tags:
   
 paths:
   /account:
+    description: Provides information about your account
     get:
-      summary: Get Account Info
-      description: Get account information
+      summary: Get Account Information
+      description: To show information about the current account, send a GET request to /{version}/account
       tags:
         - Account
       operationId: get-account
