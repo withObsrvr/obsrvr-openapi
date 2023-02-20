@@ -159,11 +159,7 @@ paths:
                 - name
             examples:
               request:
-                value:
-                  region: sfo
-                  size: do-4vcpu-16gb
-                  name: mhzn-01
-                  tag: mhzn_example
+                $ref: '#/components/examples/get-create-instance'
   '/horizon/managedInstances/{instance-id}':
     parameters:
       - name: instance-id
@@ -463,4 +459,11 @@ components:
           name: Example User
           email: user@example.com
           status: active
-
+    get-create-instance:
+      summary: Create instance request
+      description: Request body for a create instance request
+      value:
+        region: sfo
+        size: do-4vcpu-16gb
+        name: mhzn-01
+        tag: mhzn_example
