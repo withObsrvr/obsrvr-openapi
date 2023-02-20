@@ -22,6 +22,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.CUSTOM_TOKEN }}
         with:
           source-files: 'reference/Obsrvr-API.yaml'
+          destination-branch: 'main'
           destination-username: 'withObsrvr'
           destination-repository: 'obsrvr-postman'
           destination-directory: 'postman/schemas'
