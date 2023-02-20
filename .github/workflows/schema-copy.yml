@@ -12,7 +12,7 @@ jobs:
       - name: Copy Files to Other Repositories
         uses: derberg/copy-files-to-other-repositories@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.CUSTOM_TOKEN }}
           committer_username: tmosleyIII 
           committer_email: tillman@withobsrvr.com 
           commit_message: "Updating OpenAPI Schema" 
