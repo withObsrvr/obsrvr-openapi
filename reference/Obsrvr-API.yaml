@@ -28,6 +28,8 @@ tags:
     description: Managed Instance tag
   - name: ManagedInstances
     description: Managed Instance tag
+  - name: Networks
+    description: Network tag
   - name: Plans
     description: Plans tag
   - name: Projects
@@ -214,6 +216,25 @@ paths:
           description: Too Many Requests
         '500':
           description: Server Error
+  /networks:
+    get:
+      summary: Get Networks
+      description: Get Networks
+      tags:
+        - Networks
+      operationId: get-networks
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/networks'
+              examples:
+                success:
+                  $ref: '#/components/examples/get-network'
   /plans:
     get:
       summary: List All Plans
@@ -371,6 +392,19 @@ components:
         version:
           type: string
           description: The version of the software for this instance
+    networks:
+      title: networks
+      type: object
+      tags:
+        - networks
+      description: Network Information
+      properties:
+        id:
+          type: string
+          description: A unique ID for the network
+        name:
+          type: string
+          description: Name for the network
     region:
       title: region
       type: object
@@ -467,3 +501,10 @@ components:
         size: do-4vcpu-16gb
         name: mhzn-01
         tag: mhzn_example
+    get-network:
+      summary: Get Networ
+      description: Request body for a get network request
+      value:
+        id: S-123
+        name: stellar-public
+
