@@ -1,0 +1,21 @@
+name: Copy OpenAPI schema to other repositories
+
+on:
+  push:
+    branches: [main]
+jobs:
+  replicate_changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Copy Files to Other Repositories
+        uses: derberg/copy-files-to-other-repositories@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          committer_username: tmosleyIII 
+          committer_email: tillman@withobsrvr.com 
+          commit_message: "Updating OpenAPI Schema" 
+          patterns_to_include: 'reference/Obsrvr-API.yaml'
+          repos_to_ignore: Stellar-Horizon-API, soroban-rpc-postman, soroban-tools
+          destination: 'postman/schemas' 
