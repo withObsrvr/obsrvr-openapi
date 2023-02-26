@@ -1,5 +1,5 @@
 # Introduction
 
-Discover how to leverage Obsrvr APIs to integrate global financial rails and blockchain infrastructure in order to create the next generation of internet finance and commerce apps.
+Find out how to use Obsrvr APIs to connect your business to the global financial rails and blockchain infrastructure so you can make the next generation of finance and commerce apps for the internet.
 
-The Obsrvr API is designed with REST in mind. Our API accepts form-encoded request bodies, delivers JSON-encoded replies, and employs standard HTTP response codes, authentication, and verbs.
+The Obsrvr API is built to work with REST. Our API accepts form-encoded request bodies and sends JSON-encoded responses. It also uses standard HTTP response codes, authentication, and verbs.
