@@ -2,6 +2,11 @@
   "collapseTableOfContents": false,
   "items": [
     {
+      "type": "item",
+      "title": "API Quickstart",
+      "uri": "/docs/Introduction.md"
+    },
+    {
       "type": "divider",
       "title": "quickstart"
     },
