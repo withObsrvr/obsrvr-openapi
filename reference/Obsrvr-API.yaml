@@ -4,7 +4,7 @@ x-stoplight:
 info:
   title: Obsrvr Platform API
   version: 0.0.1
-  description: Obsrvr Platform API 
+  description: With the Obsrvr Platform API, you can use HTTP requests to manage your instances and other resources programmatically. You can do everything with the API that you can do through the Obsrvr Console, except for making personal access tokens.
   license:
       url: https://opensource.org/license/mit/
       name: MIT
