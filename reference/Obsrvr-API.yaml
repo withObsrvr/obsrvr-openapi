@@ -574,6 +574,10 @@ components:
         id:
           type: string
           description: A unique ID for the network
+          enum:
+            - stellar-futurenet
+            - stellar-testnet
+            - stellar-pubnet
         name:
           type: string
           description: Name for the network
