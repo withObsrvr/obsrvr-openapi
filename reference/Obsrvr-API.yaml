@@ -4,15 +4,15 @@ x-stoplight:
 info:
   title: Obsrvr Platform API
   version: 0.0.1
-  description: With the Obsrvr Platform API, you can use HTTP requests to manage your instances and other resources programmatically. You can do everything with the API that you can do through the Obsrvr Console, except for making personal access tokens.
+  description: |
+    With the Obsrvr Platform API, you can use HTTP requests to manage your instances and other resources programmatically. You can do everything with the API that you can do through the Obsrvr Console, except for making personal access tokens.
   license:
-      url: https://opensource.org/license/mit/
-      name: MIT
+    url: 'https://opensource.org/license/mit/'
+    name: MIT
   contact:
     email: api-engineering@withobsrvr.com
     name: Obsrvr Platform API
     url: www.withobsrvr.com
-
 servers:
   - url: 'https://api.withobsrvr.com/{version}'
     description: Obsrvr Platform API
@@ -38,13 +38,13 @@ tags:
     description: Regions tag
   - name: Tags
     description: Tags tag
-  
 paths:
   /account:
     description: Provides information about your account
     get:
       summary: Get Account Information
-      description: To show information about the current account, send a GET request to /{version}/account
+      description: |
+        To show information about the current account, send a GET request to /{version}/account
       tags:
         - Account
       operationId: get-account
@@ -59,7 +59,7 @@ paths:
                 type: object
                 properties:
                   account:
-                    $ref: '#/components/schemas/account'
+                    $ref: '#/components/schemas/Account'
               examples:
                 success:
                   $ref: '#/components/examples/get-account-success-200'
@@ -82,8 +82,7 @@ paths:
               examples:
                 success:
                   $ref: '#/components/examples/get-billing-balance-success-200'
-
-  /horizon/managedInstances:
+  /instances:
     get:
       summary: List All Managed Instances
       description: List All Managed Instances
@@ -103,15 +102,31 @@ paths:
                   instances:
                     type: array
                     items:
-                      $ref: '#/components/schemas/instance'
+                      $ref: '#/components/schemas/Instance'
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       summary: Create a Managed Instance
       tags:
@@ -129,41 +144,40 @@ paths:
                 type: object
                 properties:
                   instance:
-                    $ref: '#/components/schemas/instance'
+                    $ref: '#/components/schemas/Instance'
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
       requestBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                region:
-                  type: string
-                  description: The Region ID of where the instance is located
-                size:
-                  type: string
-                  description: The Size ID of the instance
-                name:
-                  type: string
-                  description: The name of the instance
-                tag:
-                  type: string
-                  description: User-supplied tags for the instance
-              required:
-                - region
-                - size
-                - name
+              $ref: '#/components/schemas/InstanceCreate'
             examples:
               request:
                 $ref: '#/components/examples/get-create-instance'
-  '/horizon/managedInstances/{instance-id}':
+  '/instances/{instance-id}':
     parameters:
       - name: instance-id
         description: ID for instance
@@ -188,15 +202,31 @@ paths:
                 type: object
                 properties:
                   instances:
-                    $ref: '#/components/schemas/instance'
+                    $ref: '#/components/schemas/Instance'
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /projects:
     get:
       summary: List All Projects
@@ -209,14 +239,34 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '429':
           description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
           description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /networks:
     get:
       summary: Get Networks
@@ -232,7 +282,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/networks'
+                $ref: '#/components/schemas/Networks'
               examples:
                 success:
                   $ref: '#/components/examples/get-network'
@@ -251,15 +301,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/plans'
+                $ref: '#/components/schemas/Plans'
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /regions:
     get:
       summary: List All Regions
@@ -275,15 +341,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/region'
+                $ref: '#/components/schemas/Region'
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /tags:
     get:
       summary: List All Tags
@@ -299,15 +381,31 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/status'
+                $ref: '#/components/schemas/Status'
         '400':
           description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       summary: Create a new Tag
       description: Create a new Tag
@@ -322,11 +420,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/status'
+                $ref: '#/components/schemas/Status'
 components:
   schemas:
-    account:
+    Account:
       title: account
+      x-stoplight:
+        id: 0e1600ed7e492
       type: object
       description: Account information
       tags:
@@ -359,9 +459,21 @@ components:
         month_to_date_balance:
           type: number
           description: Balance as of the generated_at time
-
-    instance:
+    Error:
+      type: object
+      required:
+        - code 
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    Instance:
       title: instance
+      x-stoplight:
+        id: ffc60de2a4286
       type: object
       tags:
         - Instances
@@ -396,8 +508,28 @@ components:
         version:
           type: string
           description: The version of the software for this instance
-    networks:
+    InstanceCreate:
+      properties:
+        region:
+          type: string
+          description: The Region ID of where the instance is located
+        size:
+          type: string
+          description: The Size ID of the instance
+        name:
+          type: string
+          description: The name of the instance
+        tag:
+          type: string
+          description: User-supplied tags for the instance
+      required:
+        - region
+        - size
+        - name
+    Networks:
       title: networks
+      x-stoplight:
+        id: dcf230a1f26d1
       type: object
       tags:
         - networks
@@ -409,8 +541,10 @@ components:
         name:
           type: string
           description: Name for the network
-    region:
+    Region:
       title: region
+      x-stoplight:
+        id: ee70215cb69bb
       type: object
       tags:
         - region
@@ -432,8 +566,10 @@ components:
           description: An array of available plans in this region
           items:
             type: string
-    plans:
+    Plans:
       title: plans
+      x-stoplight:
+        id: 7c39baee01e51
       type: object
       tags:
         - plans
@@ -471,8 +607,10 @@ components:
         available:
           type: boolean
           description: Availability of this Plan
-    status:
+    Status:
       type: string
+      x-stoplight:
+        id: 024ee7cb0c022
       maxLength: 256
       description: A Message
       example: OK
@@ -489,7 +627,7 @@ components:
         account_balance: 43.21
         currency: USD
         month_to_date_balance: 12.34
-        generated_at: 2023-02-19T17:07:22Z
+        generated_at: '2023-02-19T17:07:22Z'
     get-account-success-200:
       summary: Retrieve account information
       description: Retrieve account information for the User account
@@ -507,9 +645,8 @@ components:
         name: mhzn-01
         tag: mhzn_example
     get-network:
-      summary: Get Networ
+      summary: Get Network
       description: Request body for a get network request
       value:
         id: S-123
         name: stellar-public
-
