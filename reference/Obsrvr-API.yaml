@@ -517,9 +517,9 @@ components:
         id:
           type: string
           description: A unique ID for the instance
-        ipv4:
+        uri:
           type: string
-          description: IP Address of the instance
+          description: Address of the instance
         date_created:
           type: string
           description: The date this instance was created
