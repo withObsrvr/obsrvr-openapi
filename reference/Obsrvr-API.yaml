@@ -137,7 +137,7 @@ paths:
         - api_key: []
       responses:
         '202':
-          description: Created
+          description: Provisioning in Process
           content:
             application/json:
               schema:
