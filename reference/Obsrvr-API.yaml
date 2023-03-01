@@ -555,6 +555,13 @@ components:
         name:
           type: string
           description: The name of the instance
+        instance_type:
+          type: string
+          description: Type of instance
+          default: shared
+          enum:
+            - shared
+            - dedicated
         tag:
           type: string
           description: User-supplied tags for the instance
@@ -688,5 +695,5 @@ components:
       summary: Get Network
       description: Request body for a get network request
       value:
-        id: S-123
-        name: stellar-public
+        id: stellar-pubnet
+        name: Stellar Public
