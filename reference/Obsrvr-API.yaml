@@ -14,7 +14,7 @@ info:
     name: Obsrvr Platform API
     url: www.withobsrvr.com
 servers:
-  - url: 'https://api.withobsrvr.com/{version}'
+  - url: 'https://api.nodeswithobsrvr.co'
     description: Obsrvr Platform API
     variables:
       version:
